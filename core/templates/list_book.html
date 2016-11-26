@@ -1,0 +1,29 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List all books...</title>
+</head>
+<body>
+    <a href="/add_book">Add Book</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>英文名</th>
+            <th>中文名</th>
+            <th>创建日期</th>
+            <th>封面图片</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name_en }}</td>
+                <td>{{ book.name_ch }}</td>
+                <td>{{ book.created_at }}</td>
+                <td>{{ book.cover }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}
