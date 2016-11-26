@@ -8,9 +8,9 @@ from core.database import db, migrate
 
 def create_app(config=make_config()):
     app = Flask(__name__)
+    app.config.from_object(config)
     db.init_app(app)
     migrate.init_app(app, db)
-    app.config.from_object(config)
     app.secret_key = app.config["SECRET_KEY"]
     register_blueprints(app)
     return app

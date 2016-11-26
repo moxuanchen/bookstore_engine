@@ -2,6 +2,7 @@
 
 
 class Config():
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     SECRET_KEY = "\xf5\x8elP\x05\xf1\xbb=\xfe'\xabV\x0e\\<\xff\xa1E\xa7%:\x03\x93\x1d"
 
 
