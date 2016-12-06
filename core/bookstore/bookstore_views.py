@@ -10,6 +10,7 @@ from . import blueprint
 from core.database import db
 from core.models import Book
 from dateutil import parser
+from core.ui import RegistrationForm
 
 
 @blueprint.route('/', methods=['GET'])
@@ -18,6 +19,15 @@ def book_store_index():
         return redirect(url_for("bookstore.book_store_list_books"))
     else:
         return redirect(url_for("bookstore.book_store_login"))
+
+
+@blueprint.route('/register', methods=['GET', 'POST'])
+def book_store_user_register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        print form.username.data
+        return redirect(url_for('bookstore.book_store_list_books'))
+    return render_template('registration.html', form=form)
 
 
 @blueprint.route('/login', methods=['GET', 'POST'])
